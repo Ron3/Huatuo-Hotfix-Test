@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 2527447126
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 177da111dadbb1893c0316c31f02c91a
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9515061ae92960442418973ae10bffea
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 104
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: e25d6ed3a77268d4db84bdf9758d64c1, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 157
+  Script: {instanceID: 0}
+- Class: 196
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Scenes/HotUpdateScene.unity
+Dependencies: []
