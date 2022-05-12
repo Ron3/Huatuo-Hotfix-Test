@@ -136,13 +136,10 @@ namespace HuaTuo
                 File.Copy(dllPath, dllBytesPath, true);
                 notSceneAssets.Add(dllBytesPath);
             }
-
-
+            
             string testPrefab = $"{Application.dataPath}/Prefabs/HotUpdatePrefab.prefab";
             notSceneAssets.Add(testPrefab);
             AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
-
-
 
             List<AssetBundleBuild> abs = new List<AssetBundleBuild>();
             AssetBundleBuild notSceneAb = new AssetBundleBuild
@@ -151,6 +148,18 @@ namespace HuaTuo
                 assetNames = notSceneAssets.Select(s => ToReleateAssetPath(s)).ToArray(),
             };
             abs.Add(notSceneAb);
+
+            // by Ron. 把我新加的prefab也加进去
+            string ronPrefab = $"{Application.dataPath}/Prefabs/ron_1.prefab";
+            List<string> ronAssetList = new List<string>();
+            ronAssetList.Add(ronPrefab);
+            AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
+            AssetBundleBuild ronAB = new AssetBundleBuild
+            {
+                assetBundleName = "ronAB",
+                assetNames = ronAssetList.Select(s => ToReleateAssetPath(s)).ToArray(),
+            };
+            abs.Add(ronAB);
 
 
             string testScene = $"{Application.dataPath}/Scenes/HotUpdateScene.unity";
