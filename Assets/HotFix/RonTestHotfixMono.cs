@@ -9,6 +9,7 @@ using System.Diagnostics;
 public class RonTestHotFixMono : MonoBehaviour
 {
     private List<RonNewClass> objList = new List<RonNewClass>();
+    private List<HotfixLayerSub> hotfixClassObjList = new List<HotfixLayerSub>();
 
     /// <summary>
     /// 
@@ -23,6 +24,9 @@ public class RonTestHotFixMono : MonoBehaviour
     /// </summary>
     private void Start()
     {
+        // 定义测试的数量
+        int countNum = 10000;
+
         // 1, 测试协程
         this.StartCoroutine(this._TestCoroutine());
 
@@ -36,13 +40,23 @@ public class RonTestHotFixMono : MonoBehaviour
         // 3, 测试性能
         Stopwatch sw = new Stopwatch();
         sw.Restart();
-        for(int i = 0; i < 10000; ++i)
+        for(int i = 0; i < countNum; ++i)
         {
             GameObject gObj = new GameObject();
             gObj.name = $"{i}";
         }
         sw.Stop();
         UnityEngine.Debug.Log($"hotfix层生成1w个GameObject耗时: {sw.ElapsedMilliseconds}");
+
+        // 4, new跨域继承的类
+        this.hotfixClassObjList.Clear();
+        sw.Restart();
+        for(int i = 0; i < countNum; ++i)
+        {
+            this.hotfixClassObjList.Add(new HotfixLayerSub(i, $"sub-{i}"));
+        }
+        sw.Stop();
+        UnityEngine.Debug.Log($"[重新修改] hotfix层生成1w个 热更层的子类 耗时: {sw.ElapsedMilliseconds}");
     }
 
     /// <summary>
