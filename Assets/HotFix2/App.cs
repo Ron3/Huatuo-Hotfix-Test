@@ -9,10 +9,11 @@ public class App
 {
     public static int Main()
     {
-        Debug.Log("hello, huatuo. 当你看到这个,就是热更新成功. Jeff 222222222222");
+        Debug.Log("hello, huatuo. 当你看到这个,就是热更新成功. Jeff 3333333");
 
         var go = new GameObject("HotFix2 -- HotFix修改过的");
         go.AddComponent<CreateByHotFix2>();
+        go.AddComponent<RonTestHotFixMono>();
 
         return 0;
     }

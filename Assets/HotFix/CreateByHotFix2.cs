@@ -10,9 +10,15 @@ public class CreateByHotFix2 : MonoBehaviour
         Debug.Log("CreateByHotFix2");
     }
 
+    private void Awake() 
+    {
+        Debug.Log($"CreateByHotFix2 Awake");
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        // Debug.Log($"CreateByHotFix2 Update");
     }
+
 }

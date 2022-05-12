@@ -4,9 +4,30 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using System.Diagnostics;
+
+/// <summary>
+/// 原生层基类
+/// </summary>
+public class OriginLayerBase
+{
+    public int val;
+    public int id = 0;
+    public OriginLayerBase(int id=0)
+    {
+        this.id = id;
+    }
+
+    public virtual void ShowInfo()
+    {
+        UnityEngine.Debug.Log($"OriginLayerBase ShowLog id: {this.id} val: {this.val}");
+    }
+}
 
 public class LoadDll : MonoBehaviour
 {
+    
+
     void Start()
     {
         BetterStreamingAssets.Initialize();
@@ -41,6 +62,17 @@ public class LoadDll : MonoBehaviour
         var appType = gameAss.GetType("App");
         var mainMethod = appType.GetMethod("Main");
         mainMethod.Invoke(null, null);
+
+        // 3, 测试性能
+        Stopwatch sw = new Stopwatch();
+        sw.Restart();
+        for(int i = 0; i < 10000; ++i)
+        {
+            GameObject gObj = new GameObject();
+            gObj.name = $"AOT-{i}";
+        }
+        sw.Stop();
+        UnityEngine.Debug.Log($"原生层生成1w个GameObject耗时: {sw.ElapsedMilliseconds}");
 
         // 如果是Update之类的函数，推荐先转成Delegate再调用，如
         //var updateMethod = appType.GetMethod("Update");
