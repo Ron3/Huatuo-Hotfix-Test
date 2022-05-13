@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics;
+using UnityEngine.Networking;
+using BPGames;
 
 
 /// <summary>
@@ -89,6 +91,9 @@ public class RonTestHotFixMono : MonoBehaviour
                 UnityEngine.Debug.Log($"生成ronPrefab失败~~~");
             }
         }
+
+        // 5, 测试异步
+        this._TestAsync();
     }
 
     /// <summary>
@@ -108,5 +113,30 @@ public class RonTestHotFixMono : MonoBehaviour
         UnityEngine.Debug.Log($"进入协程函数 ...");
         yield return new WaitForSeconds(2);
         UnityEngine.Debug.Log($"离开协程函数 ...");
+    }
+
+
+    /// <summary>
+    /// 测试异步的
+    /// </summary>
+    /// <returns></returns>
+    private async void _TestAsync()
+    {
+        UnityEngine.Debug.Log($"进入 _TestAsync");
+        await this._TestCopyAB();
+        UnityEngine.Debug.Log($"离开 _TestAsync");
+    }
+
+
+    private async System.Threading.Tasks.Task<bool> _TestCopyAB()
+    {
+        using(UnityWebRequest request = UnityWebRequest.Get("https://baidu.com"))
+        {
+            await request.SendWebRequest();
+            UnityEngine.Debug.Log($"response Code ==> {request.responseCode}");
+            UnityEngine.Debug.Log($"response Text ==> {request.downloadHandler.text}");
+        }
+        
+        return true;
     }
 }
