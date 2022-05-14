@@ -22,11 +22,10 @@ public class RefTypes : MonoBehaviour
         var builder = new System.Runtime.CompilerServices.AsyncVoidMethodBuilder();
         var v = default(IAsyncStateMachine);
         builder.Start(ref v);
-
+        
         System.Linq.Enumerable.Skip<bool>((IEnumerable<bool>)null, 0);
-
-        System.Runtime.CompilerServices.TaskAwaiter<bool> a = new System.Runtime.CompilerServices.TaskAwaiter<bool>();
-        // System.Linq.Enumerable.Skip<bool>(a, 0);
+        
+        // System.Runtime.CompilerServices.TaskAwaiter<bool> a = new System.Runtime.CompilerServices.TaskAwaiter<bool>();
     }
 
 
@@ -473,12 +472,39 @@ public class RefTypes : MonoBehaviour
     {
         var stateMachine = new RefStateMachine();
 
+        
         TaskAwaiter aw = default;
         var c0 = new AsyncTaskMethodBuilder();
         c0.Start(ref stateMachine);
         c0.AwaitUnsafeOnCompleted(ref aw, ref stateMachine);
         c0.SetException(null);
         c0.SetResult();
+
+        // // by Ron
+        // TaskAwaiter<bool> awBool = new TaskAwaiter<bool>();
+        // var cRon = new AsyncTaskMethodBuilder();
+        // cRon.AwaitUnsafeOnCompleted(ref awBool, ref stateMachine);
+        // cRon.SetException(null);
+        // cRon.SetResult();
+
+        // by Ron
+        TaskAwaiter<bool> awBool2 = new TaskAwaiter<bool>();
+        var cRon2 = new AsyncTaskMethodBuilder<TaskAwaiter<bool>>();
+        cRon2.AwaitUnsafeOnCompleted(ref awBool2, ref stateMachine);
+        cRon2.SetException(null);
+        cRon2.SetResult(default);
+
+        var cRon3 = System.Runtime.CompilerServices.AsyncVoidMethodBuilder.Create();
+        cRon3.AwaitUnsafeOnCompleted(ref awBool2, ref stateMachine);
+        cRon3.SetException(null);
+        cRon3.SetResult();
+
+        BPGames.UnityWebRequestAwaiter bpWwaiter = new BPGames.UnityWebRequestAwaiter(new UnityEngine.Networking.UnityWebRequestAsyncOperation());
+        var cRon4 = System.Runtime.CompilerServices.AsyncTaskMethodBuilder<bool>.Create();
+        cRon4.AwaitOnCompleted(ref bpWwaiter, ref stateMachine);
+        cRon4.SetException(null);
+        cRon4.SetResult(default);
+
 
         var c1 = new AsyncTaskMethodBuilder();
         c1.Start(ref stateMachine);
