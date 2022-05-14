@@ -5,6 +5,8 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Scripting;
+using System.Linq;
+
 
 [assembly: Preserve]
 enum IntEnum : int
@@ -15,10 +17,28 @@ enum IntEnum : int
 
 public class RefTypes : MonoBehaviour
 {
+    public void MyAOTRefs()
+    {
+        var builder = new System.Runtime.CompilerServices.AsyncVoidMethodBuilder();
+        var v = default(IAsyncStateMachine);
+        builder.Start(ref v);
+
+        System.Linq.Enumerable.Skip<bool>((IEnumerable<bool>)null, 0);
+
+        System.Runtime.CompilerServices.TaskAwaiter<bool> a = new System.Runtime.CompilerServices.TaskAwaiter<bool>();
+        // System.Linq.Enumerable.Skip<bool>(a, 0);
+    }
+
+
+
     List<Type> GetTypes()
     {
+        // 调用一下? 防止剪裁?
+        this.MyAOTRefs();
+
         return new List<Type>
         {
+
         };
     }
 
