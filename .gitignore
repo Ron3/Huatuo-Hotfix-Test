@@ -58,3 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# by Ron
+huatuo_app_BackUpThisFolder_ButDontShipItWithYourGame
+Assets/HuaTuo/
+Assets/StreamingAssets/
+
