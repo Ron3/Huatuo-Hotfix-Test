@@ -135,6 +135,7 @@ namespace HuaTuo
                 string dllPath = $"{GetDllBuildOutputDirByTarget(target)}/{dll}";
                 string dllBytesPath = $"{tempDir}/{dll}.bytes";
                 File.Copy(dllPath, dllBytesPath, true);
+                // UnityEngine.Debug.Log($"dllBytesPath ==> {dllBytesPath}");
                 notSceneAssets.Add(dllBytesPath);
             }
             

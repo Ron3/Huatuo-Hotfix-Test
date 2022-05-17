@@ -110,6 +110,7 @@ namespace HuaTuo
                 }
                 content = JsonUtility.ToJson(scriptingAssemblies);
 
+                // UnityEngine.Debug.Log($"Ron file ====> {file}");
                 File.WriteAllText(file, content);
             }
         }
