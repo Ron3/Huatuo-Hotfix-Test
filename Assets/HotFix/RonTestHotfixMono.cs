@@ -15,6 +15,8 @@ public class RonTestHotFixMono : MonoBehaviour
     private List<HotfixLayerSub> hotfixClassObjList = new List<HotfixLayerSub>();
     private AssetBundle ronAB = null;
 
+    public string btText = "这句话是要显示的在行为树里的!";
+
     /// <summary>
     /// 
     /// </summary>
@@ -134,7 +136,7 @@ public class RonTestHotFixMono : MonoBehaviour
         {
             await request.SendWebRequest();
             UnityEngine.Debug.Log($"response Code ==> {request.responseCode}");
-            UnityEngine.Debug.Log($"response Text ==> {request.downloadHandler.text}");
+            UnityEngine.Debug.Log($"response Text ==> {request.downloadHandler.text.Length}");
         }
         
         return true;

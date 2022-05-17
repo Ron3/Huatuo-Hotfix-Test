@@ -1,4 +1,5 @@
 <linker>
+    <assembly fullname="ParadoxNotion" preserve="all" />
 	<assembly fullname="Unity.Main" preserve="all" />
 	<assembly fullname="Unity.Hotfix" preserve="all" />
 	<assembly fullname="Unity.NGUI" preserve="all" />
