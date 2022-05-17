@@ -59,56 +59,56 @@ public class RonTestHotFixMono : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        // // 定义测试的数量
-        // int countNum = 10000;
+        // 定义测试的数量
+        int countNum = 10000;
         
-        // // 1, 测试协程
-        // this.StartCoroutine(this._TestCoroutine());
+        // 1, 测试协程
+        this.StartCoroutine(this._TestCoroutine());
 
-        // // 2, 测试新增类
-        // this.objList.Add(new RonNewClass(1));
-        // this.objList.Add(new RonNewClass(2));
-        // this.objList.Add(new RonNewClass(3));
-        // foreach(RonNewClass obj in this.objList)
-        //     obj.ShowLog();
+        // 2, 测试新增类
+        this.objList.Add(new RonNewClass(1));
+        this.objList.Add(new RonNewClass(2));
+        this.objList.Add(new RonNewClass(3));
+        foreach(RonNewClass obj in this.objList)
+            obj.ShowLog();
         
-        // // 3, 测试性能
-        // Stopwatch sw = new Stopwatch();
-        // sw.Restart();
-        // for(int i = 0; i < countNum; ++i)
-        // {
-        //     GameObject gObj = new GameObject();
-        //     gObj.name = $"{i}";
-        // }
-        // sw.Stop();
-        // UnityEngine.Debug.Log($"hotfix层生成1w个GameObject耗时: {sw.ElapsedMilliseconds}");
+        // 3, 测试性能
+        Stopwatch sw = new Stopwatch();
+        sw.Restart();
+        for(int i = 0; i < countNum; ++i)
+        {
+            GameObject gObj = new GameObject();
+            gObj.name = $"{i}";
+        }
+        sw.Stop();
+        UnityEngine.Debug.Log($"hotfix层生成1w个GameObject耗时: {sw.ElapsedMilliseconds}");
 
-        // // 4, new跨域继承的类
-        // this.hotfixClassObjList.Clear();
-        // sw.Restart();
-        // for(int i = 0; i < countNum; ++i)
-        // {
-        //     this.hotfixClassObjList.Add(new HotfixLayerSub(i, $"sub-{i}"));
-        // }
-        // sw.Stop();
-        // UnityEngine.Debug.Log($"[重新修改] hotfix层生成1w个 热更层的子类 耗时: {sw.ElapsedMilliseconds}");
+        // 4, new跨域继承的类
+        this.hotfixClassObjList.Clear();
+        sw.Restart();
+        for(int i = 0; i < countNum; ++i)
+        {
+            this.hotfixClassObjList.Add(new HotfixLayerSub(i, $"sub-{i}"));
+        }
+        sw.Stop();
+        UnityEngine.Debug.Log($"[重新修改] hotfix层生成1w个 热更层的子类 耗时: {sw.ElapsedMilliseconds}");
 
-        // // 4, AssetBundle dllAB = BetterStreamingAssets.LoadAssetBundle("common");
-        // if(this.ronAB != null)
-        // {
-        //     GameObject ronPrefab = GameObject.Instantiate(this.ronAB.LoadAsset<UnityEngine.GameObject>("ron_1.prefab"));
-        //     if(ronPrefab != null)
-        //     {
-        //         UnityEngine.Debug.Log($"生成ronPrefab成功~~~");
-        //     }
-        //     else
-        //     {
-        //         UnityEngine.Debug.Log($"生成ronPrefab失败~~~");
-        //     }
-        // }
+        // 4, AssetBundle dllAB = BetterStreamingAssets.LoadAssetBundle("common");
+        if(this.ronAB != null)
+        {
+            GameObject ronPrefab = GameObject.Instantiate(this.ronAB.LoadAsset<UnityEngine.GameObject>("ron_1.prefab"));
+            if(ronPrefab != null)
+            {
+                UnityEngine.Debug.Log($"生成ronPrefab成功~~~");
+            }
+            else
+            {
+                UnityEngine.Debug.Log($"生成ronPrefab失败~~~");
+            }
+        }
 
-        // // 5, 测试异步
-        // this._TestAsync();
+        // 5, 测试异步
+        this._TestAsync();
 
         // 测试加载场景
         // this.sceneAB.LoadAsset<UnityEngine.Scene>();
