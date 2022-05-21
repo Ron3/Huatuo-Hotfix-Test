@@ -24,7 +24,16 @@ public class RefTypes : MonoBehaviour
         builder.Start(ref v);
         
         System.Linq.Enumerable.Skip<bool>((IEnumerable<bool>)null, 0);
+        System.Linq.Enumerable.Skip<object>((IEnumerable<object>)null, 0);
+        System.Linq.Enumerable.ElementAt<object>((IEnumerable<object>)null, 0);
+        System.Linq.Enumerable.ElementAt<KeyValuePair<int, object>>((IEnumerable<KeyValuePair<int, object>>)null, 0);
         
+        // MissingMethodException: MethodPointerNotImplement System.Collections.Generic.IEnumerable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] System.Linq.Enumerable::Select<System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]],System.String>(System.Collections.Generic.IEnumerable`1[[System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5
+        System.Linq.Enumerable.Select<KeyValuePair<string, int>, string>((IEnumerable<KeyValuePair<string, int>>)null, (System.Func<KeyValuePair<string, int>, string>)null);
+        
+        // MissingMethodException: MethodPointerNotImplement System.Linq.IOrderedEnumerable`1[[System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] System.Linq.Enumerable::OrderBy<System.Collections.Generic.KeyValuePair`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, Public
+        System.Linq.Enumerable.OrderBy<KeyValuePair<string, int>, int>((IEnumerable<KeyValuePair<string, int>>)null, (System.Func<KeyValuePair<string, int>, int>)null);
+
         // System.Runtime.CompilerServices.TaskAwaiter<bool> a = new System.Runtime.CompilerServices.TaskAwaiter<bool>();
     }
 
